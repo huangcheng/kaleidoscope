@@ -23,6 +23,11 @@ public:
     void startAnimation();
     void stopAnimation();
 
+    // When true (the default), any keyboard or mouse activity quits the app —
+    // correct for a screen saver. Windowed demo mode turns this off so the
+    // window behaves like a normal application.
+    void setExitOnInput(bool enable) { m_exitOnInput = enable; }
+
     // Install as app-level event filter for reliable key capture on macOS fullscreen
     bool eventFilter(QObject *obj, QEvent *event) override;
 
@@ -51,6 +56,7 @@ private:
     bool            m_running;
     QPoint          m_lastMousePos;
     bool            m_mouseInitialized;
+    bool            m_exitOnInput = true;
     QList<int>      m_keybuf;        // buffered keypresses for demo core
 
     static constexpr int VGA_W = 320;

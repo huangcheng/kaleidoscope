@@ -177,7 +177,7 @@ void ScreensaverWidget::keyPressEvent(QKeyEvent *event)
 
 void ScreensaverWidget::handleKey(QKeyEvent *event)
 {
-    // Escape exits the screensaver; all other keys go to the demo core
+    // Escape always exits, even in windowed demo mode
     if (event->key() == Qt::Key_Escape) {
         QGuiApplication::quit();
         return;
@@ -216,7 +216,12 @@ void ScreensaverWidget::showEvent(QShowEvent *event)
 
 void ScreensaverWidget::mouseMoveEvent(QMouseEvent *event)
 {
-    // Exit on significant mouse movement (> 10 pixels)
+    // Exit on significant mouse movement (> 10 pixels) — screen saver only
+    if (!m_exitOnInput) {
+        QWidget::mouseMoveEvent(event);
+        return;
+    }
+
     if (!m_mouseInitialized) {
         m_lastMousePos = event->pos();
         m_mouseInitialized = true;
@@ -233,8 +238,9 @@ void ScreensaverWidget::mouseMoveEvent(QMouseEvent *event)
 
 void ScreensaverWidget::mousePressEvent(QMouseEvent *event)
 {
-    // Any click exits the screensaver
-    QGuiApplication::quit();
+    // Any click exits the screen saver, but not the windowed demo
+    if (m_exitOnInput)
+        QGuiApplication::quit();
     QWidget::mousePressEvent(event);
 }
 

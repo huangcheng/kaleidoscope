@@ -44,9 +44,13 @@ static bool parseScreensaverArgs(int argc, char *argv[],
             mode = "configure";
             return true;
         }
+        if (arg == "-w" || arg == "--windowed") {
+            mode = "windowed";
+            return true;
+        }
     }
 
-    // No screensaver args → run as standalone demo (fullscreen)
+    // No screensaver args → run as a standalone fullscreen demo
     mode = "standalone";
     return false;
 }
@@ -60,7 +64,7 @@ int main(int argc, char *argv[])
 
     QString mode;
     quintptr previewHandle = 0;
-    bool isScreensaver = parseScreensaverArgs(argc, argv, mode, previewHandle);
+    parseScreensaverArgs(argc, argv, mode, previewHandle);
 
     if (mode == "configure") {
         // TODO: Configuration dialog (palette speed, effect preferences, etc.)
@@ -107,19 +111,21 @@ int main(int argc, char *argv[])
         return app.exec();
     }
 
-    // Fullscreen screensaver or standalone mode
+    // Fullscreen screensaver, standalone fullscreen demo, or windowed demo
     widget.setWindowTitle("Kaleidoscope — SONY CPD-1304 Screensaver");
 
-    if (isScreensaver || mode == "standalone") {
+    if (mode != "windowed") {
         // Fullscreen on primary screen
         QScreen *screen = app.primaryScreen();
         if (screen) {
             widget.setGeometry(screen->geometry());
         }
-        widget.setWindowState(Qt::WindowFullScreen);
         widget.setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+        widget.setWindowState(Qt::WindowFullScreen);
     } else {
-        widget.resize(640, 480);
+        widget.resize(960, 600);
+        // A windowed demo should not vanish when the user moves the mouse
+        widget.setExitOnInput(false);
     }
 
     widget.show();

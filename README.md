@@ -70,18 +70,42 @@ This installs the binary to `bin/` and a `kaleidoscope.desktop` entry to `share/
 
 ## Usage
 
-**As a screen saver** — launching with the standard screen-saver flags makes it go fullscreen and exit on keyboard or mouse activity:
+The same binary runs both as a screen saver and as a normal application.
+
+### As a screen saver
+
+Launching with the standard screen-saver flags makes it go fullscreen on the primary display, hide the cursor, stay on top, and exit on keyboard or mouse activity:
 
 ```bash
 Kaleidoscope -s          # macOS / Linux
 Kaleidoscope.scr /s      # Windows
 ```
 
-**As a windowed demo** — run with no arguments to open it in a normal window:
+### As a standalone demo
+
+Run with no arguments for a fullscreen demo without the screen-saver protocol — useful for testing and for kiosk-style use:
 
 ```bash
 ./build/Kaleidoscope.app/Contents/MacOS/Kaleidoscope
 ```
+
+### As a windowed application
+
+Pass `-w` (or `--windowed`) to run it in an ordinary resizable window. In this mode the app does **not** quit on mouse movement or clicks, so it behaves like a regular desktop program:
+
+```bash
+./build/Kaleidoscope.app/Contents/MacOS/Kaleidoscope -w
+```
+
+### Mode summary
+
+| Invocation | Window | Exits on input | Intended for |
+|---|---|---|---|
+| _(no arguments)_ | Fullscreen | Yes | Standalone demo, kiosk use |
+| `-s` / `/s` / `--screensaver` | Fullscreen | Yes | Screen saver |
+| `-w` / `--windowed` | 960×600 window | Only on Esc | Normal desktop use, debugging |
+| `/p <handle>` | Embedded in preview pane | — | Screen-saver control-panel preview |
+| `-c` / `/c` | — | — | Configuration (reserved; currently exits) |
 
 ### Keyboard controls
 
@@ -98,7 +122,7 @@ These are the controls of the original DOS program and they all still work. Pres
 | `w` | Toggle the animated transition variants |
 | `Esc` | Quit |
 
-Moving the mouse or clicking also exits, as users expect from a screen saver.
+Moving the mouse or clicking also exits — but only in fullscreen (screen-saver) mode. In windowed mode `Esc` is the way out.
 
 ### Command-line options
 
