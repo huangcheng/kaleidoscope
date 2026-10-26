@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Kaleidoscope Screensaver
+Comment=SONY CPD-1304 VGA kaleidoscope screensaver
+Exec=Kaleidoscope --screensaver
+Icon=preferences-desktop-screensaver
+Terminal=false
+Categories=Screensaver;
+StartupNotify=false
+X-KDE-ScreenSaver=true

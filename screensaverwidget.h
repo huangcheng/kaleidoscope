@@ -1,0 +1,58 @@
+// screensaverwidget.h — Qt Widget that renders the SonyDemo core as a fullscreen
+// screensaver with nearest-neighbor scaled VGA output. Cross-platform (Win/Mac/Linux).
+#pragma once
+
+#include <QWidget>
+#include <QTimer>
+#include <QImage>
+#include <QElapsedTimer>
+#include <QList>
+#include "sony_core.h"
+
+class ScreensaverWidget : public QWidget {
+    Q_OBJECT
+
+public:
+    explicit ScreensaverWidget(QWidget *parent = nullptr);
+    ~ScreensaverWidget() override;
+
+    // Initialize demo with command-line args (for screensaver protocol)
+    void initDemo(int argc, char **argv);
+
+    // Start/stop the animation loop
+    void startAnimation();
+    void stopAnimation();
+
+    // Install as app-level event filter for reliable key capture on macOS fullscreen
+    bool eventFilter(QObject *obj, QEvent *event) override;
+
+protected:
+    void paintEvent(QPaintEvent *event) override;
+    void keyPressEvent(QKeyEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override;
+    void showEvent(QShowEvent *event) override;
+
+private slots:
+    void tick();
+
+private:
+    void renderFrame();
+    void updateScaledImage();
+    void handleKey(QKeyEvent *event);
+
+    SonyDemo       *m_demo;
+    QTimer         *m_timer;
+    QImage          m_vgaImage;      // 320x200 paletted or RGB32
+    QImage          m_scaledImage;   // Nearest-neighbor scaled to widget size
+    double          m_accumulator;
+    QElapsedTimer   m_clock;
+    bool            m_running;
+    QPoint          m_lastMousePos;
+    bool            m_mouseInitialized;
+    QList<int>      m_keybuf;        // buffered keypresses for demo core
+
+    static constexpr int VGA_W = 320;
+    static constexpr int VGA_H = 200;
+};
