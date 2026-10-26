@@ -8,6 +8,9 @@
 #include <QGuiApplication>
 #include <QApplication>
 #include <cstring>
+#include <string>
+#include <vector>
+#include <cctype>
 
 ScreensaverWidget::ScreensaverWidget(QWidget *parent)
     : QWidget(parent)
@@ -37,18 +40,73 @@ ScreensaverWidget::~ScreensaverWidget()
     delete m_demo;
 }
 
+SonyDemo::Phase ScreensaverWidget::demoPhase() const
+{
+    return m_demo->phase();
+}
+
+const char *ScreensaverWidget::phaseName(SonyDemo::Phase p)
+{
+    switch (p) {
+    case SonyDemo::Phase::Intro:   return "intro";
+    case SonyDemo::Phase::Variant: return "variant";
+    case SonyDemo::Phase::Main:    return "main";
+    }
+    return "unknown";
+}
+
 void ScreensaverWidget::initDemo(int argc, char **argv)
 {
-    m_demo->init(argc, argv);
+    // Only the DOS original's own flags may reach the emulation core. Host
+    // options (-w, -s, --snapshot <path>) are our invention and must be stripped
+    // first: the core parses "/O", "/S", "/T", "/W", "/4", "/A", "/P" by prefix,
+    // so a POSIX path argument such as /tmp/x.png looks exactly like the "/T"
+    // timeout flag and silently makes the demo quit.
+    std::vector<std::string> kept;
+    kept.emplace_back(argc > 0 ? argv[0] : "Kaleidoscope");
+    for (int i = 1; i < argc; i++) {
+        const std::string a = argv[i];
+        if (a == "-w" || a == "--windowed" ||
+            a == "-s" || a == "--screensaver" || a == "/s" ||
+            a == "-c" || a == "/c" || a == "--configure")
+            continue;
+        if (a == "--snapshot" || a.rfind("--snapshot", 0) == 0) {
+            if (a == "--snapshot")
+                ++i;                    // drop the value too
+            continue;
+        }
+        // Anything else that is not a DOS-style flag (slash/dash + single letter)
+        // is host input, not a demo option.
+        const bool dosFlag = a.size() >= 2 &&
+                             (a[0] == '/' || a[0] == '-') &&
+                             std::isalpha(static_cast<unsigned char>(a[1])) &&
+                             a.find('.') == std::string::npos &&
+                             a.find('@') == std::string::npos &&
+                             a.find('/', 1) == std::string::npos;
+        if (dosFlag)
+            kept.push_back(a);
+    }
+
+    std::vector<char *> raw;
+    raw.reserve(kept.size());
+    for (std::string &s : kept)
+        raw.push_back(s.data());
+    m_demo->init(static_cast<int>(raw.size()), raw.data());
 }
 
 void ScreensaverWidget::startAnimation()
 {
+    // The core only plays the intro when init() was given no arguments, but the
+    // screen-saver flags (-s, -w, /p ...) are arguments too. If the caller asked
+    // for the intro, force it here so the flag is honoured either way.
+    if (m_playIntro && m_demo->phase() != SonyDemo::Phase::Intro)
+        m_demo->intro_begin();
+
     if (!m_running) {
         m_running = true;
         m_accumulator = 0.0;
-        // Run at ~240 Hz tick rate like the original macOS shell
-        m_timer->start(8); // ~120Hz poll; tick() paces demo frames itself
+        // Demo frames are paced by tick(); this is just the poll rate (~120Hz)
+        m_timer->start(8);
     }
 }
 
@@ -62,6 +120,12 @@ void ScreensaverWidget::tick()
 {
     if (!m_running)
         return;
+
+    // Screen-saver mode discards the intro the first time we reach it: a screen
+    // saver must never sit waiting for a key press.
+    if (!m_playIntro && m_demo->phase() == SonyDemo::Phase::Intro) {
+        m_demo->intro_end();
+    }
 
     // Advance the demo at its native cadence. The DOS original clocked one
     // demo frame every cyc_len_ vertical blanks (70Hz); use a wall-clock
@@ -83,8 +147,23 @@ void ScreensaverWidget::tick()
 
     switch (m_demo->phase()) {
     case SonyDemo::Phase::Intro:
-        // Skip intro immediately — go straight to the kaleidoscope effects
-        m_demo->intro_end();
+        // The DOS original polls the keyboard every frame here (INT 16h AH=1)
+        // and leaves the intro as soon as any key is pressed.
+        //
+        // Deliberate input only. On macOS, showing a fullscreen window can make
+        // the system deliver stray key events the user never typed (observed:
+        // Delete and 'u' arriving with no modifiers, ~1 run in 8). Treating
+        // those as "any key" dismissed the intro almost immediately at random.
+        // The intro is dismissed by a key the user actually pressed (see
+        // handleKey), which also matches the original's behaviour of requiring a
+        // real keypress rather than a buffered/system one.
+        if (m_introDismissRequested) {
+            m_introDismissRequested = false;
+            m_keybuf.clear();
+            m_demo->intro_end();
+        } else {
+            m_demo->intro_frame();
+        }
         break;
     case SonyDemo::Phase::Variant:
         if (!m_demo->variant_step()) {
@@ -171,6 +250,10 @@ void ScreensaverWidget::paintEvent(QPaintEvent *)
 
 void ScreensaverWidget::keyPressEvent(QKeyEvent *event)
 {
+    // Reached only for keys delivered to this focused widget — i.e. real
+    // keypresses. The app-level filter handles the rest.
+    if (!event->isAutoRepeat())
+        m_introDismissRequested = true;
     handleKey(event);
     QWidget::keyPressEvent(event);
 }
@@ -199,6 +282,15 @@ bool ScreensaverWidget::eventFilter(QObject *obj, QEvent *event)
     if (event->type() == QEvent::KeyPress) {
         auto *ke = static_cast<QKeyEvent *>(event);
         if (!ke->isAutoRepeat()) {
+            // This filter sees every key in the application, including stray
+            // events macOS emits when a fullscreen window appears. Only a key
+            // aimed at one of our own widgets counts as deliberate user input
+            // for the purposes of "press any key to continue".
+            QWidget *w = qobject_cast<QWidget *>(obj);
+            const bool mine = w && isAncestorOf(w);
+
+            if (mine)
+                m_introDismissRequested = true;
             handleKey(ke);
             return true; // consume: keys drive the demo, not Qt widgets
         }

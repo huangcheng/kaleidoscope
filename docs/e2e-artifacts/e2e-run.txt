@@ -1,0 +1,17 @@
+=== Kaleidoscope E2E ===
+binary: build/Kaleidoscope.app/Contents/MacOS/Kaleidoscope
+[1] windowed mode plays the intro
+  PASS  intro frame is rendering (166 colours, dominant share 0.037)
+  PASS  demo is in the intro phase
+  PASS  intro persists past 20s (waits for a key, does not auto-advance)
+  PASS  palette keeps cycling while the intro waits
+[2] screen-saver mode skips the intro
+  PASS  screen saver frame is rendering (114 colours, dominant share 0.297)
+  PASS  screen saver is in an effect phase ('variant'), never the intro
+[3] an effect flag bypasses the intro
+  FAIL  /O2 frame looks blank (18 colours, dominant share 0.928)
+  PASS  /O2 starts on an effect ('main'), not the intro
+[4] the demo does not quit on its own
+  PASS  survived 6 consecutive 9s runs without self-quitting
+
+=== 8 passed, 1 failed ===

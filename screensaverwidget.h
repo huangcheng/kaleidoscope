@@ -28,6 +28,15 @@ public:
     // window behaves like a normal application.
     void setExitOnInput(bool enable) { m_exitOnInput = enable; }
 
+    // When true, the original's intro screen plays and waits for a key, exactly
+    // as the DOS program did when started without arguments. Screen-saver mode
+    // leaves this off: a screen saver must never wait for input.
+    void setPlayIntro(bool enable) { m_playIntro = enable; }
+
+    // Current demo phase, for tests and diagnostics.
+    SonyDemo::Phase demoPhase() const;
+    static const char *phaseName(SonyDemo::Phase p);
+
     // Install as app-level event filter for reliable key capture on macOS fullscreen
     bool eventFilter(QObject *obj, QEvent *event) override;
 
@@ -57,6 +66,8 @@ private:
     QPoint          m_lastMousePos;
     bool            m_mouseInitialized;
     bool            m_exitOnInput = true;
+    bool            m_playIntro = false;
+    bool            m_introDismissRequested = false;
     QList<int>      m_keybuf;        // buffered keypresses for demo core
 
     static constexpr int VGA_W = 320;
