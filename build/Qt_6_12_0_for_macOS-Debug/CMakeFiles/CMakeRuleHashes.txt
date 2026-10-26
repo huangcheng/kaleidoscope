@@ -1,0 +1,3 @@
+# Hashes of file build rules.
+01bcde18c0b76cf6a72339f8e3110b73 CMakeFiles/Kaleidoscope_autogen
+db7dd3f2121b6c092c9ca0ae4f76519e Kaleidoscope_autogen/timestamp

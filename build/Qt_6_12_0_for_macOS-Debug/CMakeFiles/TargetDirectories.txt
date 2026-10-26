@@ -1,0 +1,9 @@
+/Users/huangcheng/Projects/Hypnosis/build/Qt_6_12_0_for_macOS-Debug/CMakeFiles/Kaleidoscope.dir
+/Users/huangcheng/Projects/Hypnosis/build/Qt_6_12_0_for_macOS-Debug/CMakeFiles/edit_cache.dir
+/Users/huangcheng/Projects/Hypnosis/build/Qt_6_12_0_for_macOS-Debug/CMakeFiles/rebuild_cache.dir
+/Users/huangcheng/Projects/Hypnosis/build/Qt_6_12_0_for_macOS-Debug/CMakeFiles/list_install_components.dir
+/Users/huangcheng/Projects/Hypnosis/build/Qt_6_12_0_for_macOS-Debug/CMakeFiles/install.dir
+/Users/huangcheng/Projects/Hypnosis/build/Qt_6_12_0_for_macOS-Debug/CMakeFiles/install/local.dir
+/Users/huangcheng/Projects/Hypnosis/build/Qt_6_12_0_for_macOS-Debug/CMakeFiles/install/strip.dir
+/Users/huangcheng/Projects/Hypnosis/build/Qt_6_12_0_for_macOS-Debug/CMakeFiles/Kaleidoscope_autogen_timestamp_deps.dir
+/Users/huangcheng/Projects/Hypnosis/build/Qt_6_12_0_for_macOS-Debug/CMakeFiles/Kaleidoscope_autogen.dir

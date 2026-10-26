@@ -1,0 +1,9 @@
+/Users/huangcheng/Projects/Hypnosis/build/CMakeFiles/Kaleidoscope.dir
+/Users/huangcheng/Projects/Hypnosis/build/CMakeFiles/edit_cache.dir
+/Users/huangcheng/Projects/Hypnosis/build/CMakeFiles/rebuild_cache.dir
+/Users/huangcheng/Projects/Hypnosis/build/CMakeFiles/list_install_components.dir
+/Users/huangcheng/Projects/Hypnosis/build/CMakeFiles/install.dir
+/Users/huangcheng/Projects/Hypnosis/build/CMakeFiles/install/local.dir
+/Users/huangcheng/Projects/Hypnosis/build/CMakeFiles/install/strip.dir
+/Users/huangcheng/Projects/Hypnosis/build/CMakeFiles/Kaleidoscope_autogen_timestamp_deps.dir
+/Users/huangcheng/Projects/Hypnosis/build/CMakeFiles/Kaleidoscope_autogen.dir
