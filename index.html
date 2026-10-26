@@ -19,10 +19,18 @@ canvas { display: block; width: 100%; height: 100%; image-rendering: pixelated; 
     position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
     color: #666; font: 16px monospace;
 }
+#repo-link {
+    position: fixed; top: 12px; right: 16px;
+    color: #555; font: 11px monospace; text-decoration: none;
+    opacity: 0; transition: opacity 0.3s;
+}
+#repo-link:hover { color: #aaa; }
+body:hover #repo-link { opacity: 1; }
 </style>
 </head>
 <body>
 <div id="loading">Loading…</div>
+<a id="repo-link" href="https://github.com/huangcheng/kaleidoscope" target="_blank" rel="noopener">github.com/huangcheng/kaleidoscope</a>
 <canvas id="screen"></canvas>
 <div id="overlay">
     Space: next effect &nbsp; c: colour cycling &nbsp; d: drawing &nbsp; a: auto-switch &nbsp; Esc: quit
