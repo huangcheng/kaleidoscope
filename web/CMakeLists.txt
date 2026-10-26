@@ -16,7 +16,7 @@ if(EMSCRIPTEN)
     set_target_properties(kaleidoscope PROPERTIES
         SUFFIX ".js"
         LINK_FLAGS "\
-            -s EXPORTED_FUNCTIONS=['_malloc','_free','_kaleidoscope_init','_kaleidoscope_step','_kaleidoscope_key','_kaleidoscope_get_framebuffer','_kaleidoscope_get_dac','_kaleidoscope_phase','_kaleidoscope_quit','_kaleidoscope_frame_dt'] \
+            -s EXPORTED_FUNCTIONS=['_malloc','_free','_kaleidoscope_init','_kaleidoscope_step','_kaleidoscope_key','_kaleidoscope_get_framebuffer','_kaleidoscope_get_dac','_kaleidoscope_phase','_kaleidoscope_quit','_kaleidoscope_frame_dt','_kaleidoscope_intro_begin','_kaleidoscope_intro_frame','_kaleidoscope_intro_end'] \
             -s EXPORTED_RUNTIME_METHODS=['ccall','cwrap','HEAPU8'] \
             -s ALLOW_MEMORY_GROWTH=1 \
             -s MODULARIZE=1 \
