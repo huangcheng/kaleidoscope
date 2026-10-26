@@ -1,0 +1,5 @@
+/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/kaleidoscope_web.dir
+/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/edit_cache.dir
+/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/rebuild_cache.dir
+/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/kaleidoscope_web_autogen_timestamp_deps.dir
+/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/kaleidoscope_web_autogen.dir

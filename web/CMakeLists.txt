@@ -3,27 +3,26 @@ project(KaleidoscopeWeb LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_AUTOMOC ON)
 
-add_executable(kaleidoscope
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+
+add_executable(kaleidoscope_web
     ../sony_core.cpp
-    web_main.cpp
+    web_qt_main.cpp
 )
 
-target_include_directories(kaleidoscope PRIVATE ..)
+target_include_directories(kaleidoscope_web PRIVATE ..)
+target_link_libraries(kaleidoscope_web PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
 
-# Emscripten-specific flags
 if(EMSCRIPTEN)
-    set_target_properties(kaleidoscope PROPERTIES
-        SUFFIX ".js"
+    set_target_properties(kaleidoscope_web PROPERTIES
+        SUFFIX ".html"
         LINK_FLAGS "\
-            -s EXPORTED_FUNCTIONS=['_malloc','_free','_kaleidoscope_init','_kaleidoscope_step','_kaleidoscope_key','_kaleidoscope_get_framebuffer','_kaleidoscope_get_dac','_kaleidoscope_phase','_kaleidoscope_quit','_kaleidoscope_frame_dt','_kaleidoscope_intro_begin','_kaleidoscope_intro_frame','_kaleidoscope_intro_end'] \
-            -s EXPORTED_RUNTIME_METHODS=['ccall','cwrap','HEAPU8'] \
             -s ALLOW_MEMORY_GROWTH=1 \
-            -s MODULARIZE=1 \
-            -s EXPORT_NAME='createKaleidoscope' \
             -s ENVIRONMENT='web' \
-            -s SINGLE_FILE=1 \
-            --no-entry \
+            -s FORCE_FILESYSTEM=0 \
+            -lembind \
             -O2"
     )
 endif()

@@ -1,0 +1,3 @@
+/Users/huangcheng/Projects/Hypnosis/web/build/CMakeFiles/kaleidoscope.dir
+/Users/huangcheng/Projects/Hypnosis/web/build/CMakeFiles/edit_cache.dir
+/Users/huangcheng/Projects/Hypnosis/web/build/CMakeFiles/rebuild_cache.dir

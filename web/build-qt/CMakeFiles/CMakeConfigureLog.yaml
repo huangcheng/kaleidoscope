@@ -1,0 +1,184 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake:200 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The target system is: Emscripten - 1 - x86
+      The host system is: Darwin - 27.0.0 - arm64
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/FindWrapAtomic.cmake:36 (check_cxx_source_compiles)"
+      - "/opt/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake:40 (_qt_internal_find_third_party_dependencies)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:44 (include)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/Qt6Config.cmake:257 (find_package)"
+      - "CMakeLists.txt:8 (find_package)"
+    checks:
+      - "Performing Test HAVE_STDATOMIC"
+    directories:
+      source: "/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-Z0YnHw"
+      binary: "/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-Z0YnHw"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/emsdk/upstream/emscripten/emscan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/platforms;/opt/emsdk/upstream/emscripten/cmake/Modules;/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6;/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/3rdparty/kwin"
+      QT_ADDITIONAL_PACKAGES_PREFIX_PATH: ""
+      QT_CHAINLOAD_TOOLCHAIN_FILE: "/opt/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+      QT_TOOLCHAIN_INCLUDE_FILE: ""
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake"
+      QT_TOOLCHAIN_RELOCATABLE_PREFIX: ""
+    buildResult:
+      variable: "HAVE_STDATOMIC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-Z0YnHw'
+        
+        Run Build Command(s): /opt/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_f3dbe/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_f3dbe.dir/build.make CMakeFiles/cmTC_f3dbe.dir/build
+        Building CXX object CMakeFiles/cmTC_f3dbe.dir/src.cxx.o
+        /opt/emsdk/upstream/emscripten/em++ -DHAVE_STDATOMIC  -std=gnu++17 -MD -MT CMakeFiles/cmTC_f3dbe.dir/src.cxx.o -MF CMakeFiles/cmTC_f3dbe.dir/src.cxx.o.d -o CMakeFiles/cmTC_f3dbe.dir/src.cxx.o -c /Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-Z0YnHw/src.cxx
+        Linking CXX executable cmTC_f3dbe.js
+        /opt/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f3dbe.dir/link.txt --verbose=1
+        /opt/emsdk/upstream/emscripten/em++ CMakeFiles/cmTC_f3dbe.dir/src.cxx.o -o cmTC_f3dbe.js
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/FindWrapRt.cmake:23 (check_cxx_source_compiles)"
+      - "/opt/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake:40 (_qt_internal_find_third_party_dependencies)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:44 (include)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/Qt6Config.cmake:257 (find_package)"
+      - "CMakeLists.txt:8 (find_package)"
+    checks:
+      - "Performing Test HAVE_GETTIME"
+    directories:
+      source: "/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-vFN8O7"
+      binary: "/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-vFN8O7"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/emsdk/upstream/emscripten/emscan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/platforms;/opt/emsdk/upstream/emscripten/cmake/Modules;/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6;/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/3rdparty/kwin"
+      QT_ADDITIONAL_PACKAGES_PREFIX_PATH: ""
+      QT_CHAINLOAD_TOOLCHAIN_FILE: "/opt/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+      QT_TOOLCHAIN_INCLUDE_FILE: ""
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake"
+      QT_TOOLCHAIN_RELOCATABLE_PREFIX: ""
+    buildResult:
+      variable: "HAVE_GETTIME"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-vFN8O7'
+        
+        Run Build Command(s): /opt/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_1b0b6/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_1b0b6.dir/build.make CMakeFiles/cmTC_1b0b6.dir/build
+        Building CXX object CMakeFiles/cmTC_1b0b6.dir/src.cxx.o
+        /opt/emsdk/upstream/emscripten/em++ -DHAVE_GETTIME  -std=gnu++17 -MD -MT CMakeFiles/cmTC_1b0b6.dir/src.cxx.o -MF CMakeFiles/cmTC_1b0b6.dir/src.cxx.o.d -o CMakeFiles/cmTC_1b0b6.dir/src.cxx.o -c /Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-vFN8O7/src.cxx
+        Linking CXX executable cmTC_1b0b6.js
+        /opt/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1b0b6.dir/link.txt --verbose=1
+        /opt/emsdk/upstream/emscripten/em++ CMakeFiles/cmTC_1b0b6.dir/src.cxx.o -o cmTC_1b0b6.js
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/FindWrapRt.cmake:34 (check_cxx_source_compiles)"
+      - "/opt/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake:40 (_qt_internal_find_third_party_dependencies)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:44 (include)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/Qt6Config.cmake:257 (find_package)"
+      - "CMakeLists.txt:8 (find_package)"
+    checks:
+      - "Performing Test HAVE_SHM_OPEN_SHM_UNLINK"
+    directories:
+      source: "/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-sp39j3"
+      binary: "/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-sp39j3"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/emsdk/upstream/emscripten/emscan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/platforms;/opt/emsdk/upstream/emscripten/cmake/Modules;/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6;/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/3rdparty/kwin"
+      QT_ADDITIONAL_PACKAGES_PREFIX_PATH: ""
+      QT_CHAINLOAD_TOOLCHAIN_FILE: "/opt/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+      QT_TOOLCHAIN_INCLUDE_FILE: ""
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake"
+      QT_TOOLCHAIN_RELOCATABLE_PREFIX: ""
+    buildResult:
+      variable: "HAVE_SHM_OPEN_SHM_UNLINK"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-sp39j3'
+        
+        Run Build Command(s): /opt/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_7bf6e/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_7bf6e.dir/build.make CMakeFiles/cmTC_7bf6e.dir/build
+        Building CXX object CMakeFiles/cmTC_7bf6e.dir/src.cxx.o
+        /opt/emsdk/upstream/emscripten/em++ -DHAVE_SHM_OPEN_SHM_UNLINK  -std=gnu++17 -MD -MT CMakeFiles/cmTC_7bf6e.dir/src.cxx.o -MF CMakeFiles/cmTC_7bf6e.dir/src.cxx.o.d -o CMakeFiles/cmTC_7bf6e.dir/src.cxx.o -c /Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-sp39j3/src.cxx
+        Linking CXX executable cmTC_7bf6e.js
+        /opt/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7bf6e.dir/link.txt --verbose=1
+        /opt/emsdk/upstream/emscripten/em++ CMakeFiles/cmTC_7bf6e.dir/src.cxx.o -o cmTC_7bf6e.js
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules/FindEGL.cmake:128 (check_cxx_source_compiles)"
+      - "/opt/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6Gui/Qt6GuiDependencies.cmake:41 (_qt_internal_find_third_party_dependencies)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake:40 (include)"
+      - "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/Qt6Config.cmake:257 (find_package)"
+      - "CMakeLists.txt:8 (find_package)"
+    checks:
+      - "Performing Test HAVE_EGL"
+    directories:
+      source: "/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-oCrJOL"
+      binary: "/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-oCrJOL"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/emsdk/upstream/emscripten/emscan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/platforms;/opt/emsdk/upstream/emscripten/cmake/Modules;/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6;/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;/opt/Qt/6.12.0/wasm_singlethread/lib/cmake/Qt6/3rdparty/kwin"
+      QT_ADDITIONAL_PACKAGES_PREFIX_PATH: ""
+      QT_CHAINLOAD_TOOLCHAIN_FILE: "/opt/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+      QT_TOOLCHAIN_INCLUDE_FILE: ""
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "/opt/Qt/6.12.0/wasm_singlethread/lib/cmake"
+      QT_TOOLCHAIN_RELOCATABLE_PREFIX: ""
+    buildResult:
+      variable: "HAVE_EGL"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-oCrJOL'
+        
+        Run Build Command(s): /opt/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_c47b5/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_c47b5.dir/build.make CMakeFiles/cmTC_c47b5.dir/build
+        Building CXX object CMakeFiles/cmTC_c47b5.dir/src.cxx.o
+        /opt/emsdk/upstream/emscripten/em++ -DHAVE_EGL  -std=gnu++17 -MD -MT CMakeFiles/cmTC_c47b5.dir/src.cxx.o -MF CMakeFiles/cmTC_c47b5.dir/src.cxx.o.d -o CMakeFiles/cmTC_c47b5.dir/src.cxx.o -c /Users/huangcheng/Projects/Hypnosis/web/build-qt/CMakeFiles/CMakeScratch/TryCompile-oCrJOL/src.cxx
+        Linking CXX executable cmTC_c47b5.js
+        /opt/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c47b5.dir/link.txt --verbose=1
+        /opt/emsdk/upstream/emscripten/em++ CMakeFiles/cmTC_c47b5.dir/src.cxx.o -o cmTC_c47b5.js
+        
+      exitCode: 0
+...

@@ -1,0 +1,24 @@
+CMakeFiles/kaleidoscope.dir/web_main.cpp.o: \
+  /Users/huangcheng/Projects/Hypnosis/web/web_main.cpp \
+  /Users/huangcheng/Projects/Hypnosis/web/../sony_core.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/cstdint \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__config \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__config_site \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__configuration/abi.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__configuration/compiler.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__configuration/platform.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/features.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__configuration/availability.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__configuration/language.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__configuration/experimental.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__configuration/hardening.h \
+  /opt/emsdk/upstream/lib/clang/24/include/stdint.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/cstring \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__cstddef/size_t.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_constant_evaluated.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/compat/string.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/string.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/string.h \
+  /opt/emsdk/upstream/emscripten/cache/sysroot/include/strings.h
